@@ -1,7 +1,8 @@
-package com.climaconsulta
+package com.climaconsulta.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.climaconsulta.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.climaconsulta.interactor
+package com.climaconsulta.user.interactor
 
 interface MainActivityInteractor {
 

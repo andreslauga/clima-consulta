@@ -7,15 +7,15 @@ import com.climaconsulta.user.view.MainActivityView
 class MainActivityPresenterImpl : MainActivityPresenter {
 
     private val mainActivityView: MainActivityView? = null
-    private val mainActivityInteractor: MainActivityInteractor? = null
-
+    private lateinit var mainActivityInteractor: MainActivityInteractor
 
     override fun getCurrentCity() {
 
     }
 
     override fun getMainWeather(cityName: String) {
-        mainActivityInteractor!!.getMainWheather(cityName)
+        mainActivityInteractor.getMainWheather(cityName)
+// TODO: NULL POINTER EXCEPTION POR QUE NO SE ESTA INICIALIZANDO LA VARIABLE
     }
 
     override fun getFiveDaysWheather(cityName: String) {

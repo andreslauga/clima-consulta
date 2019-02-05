@@ -1,13 +1,15 @@
 package com.climaconsulta.user.presenter
 
 import com.climaconsulta.user.interactor.MainActivityInteractor
+import com.climaconsulta.user.interactor.MainActivityInteractorImpl
 import com.climaconsulta.user.model.pojos.MainWeather
+import com.climaconsulta.user.view.MainActivity
 import com.climaconsulta.user.view.MainActivityView
 
 class MainActivityPresenterImpl : MainActivityPresenter {
 
-    private val mainActivityView: MainActivityView? = null
-    private lateinit var mainActivityInteractor: MainActivityInteractor
+    private var mainActivityView: MainActivityView = MainActivity()
+    private var mainActivityInteractor: MainActivityInteractor = MainActivityInteractorImpl()
 
     override fun getCurrentCity() {
 
@@ -15,15 +17,14 @@ class MainActivityPresenterImpl : MainActivityPresenter {
 
     override fun getMainWeather(cityName: String) {
         mainActivityInteractor.getMainWheather(cityName)
-// TODO: NULL POINTER EXCEPTION POR QUE NO SE ESTA INICIALIZANDO LA VARIABLE
     }
 
     override fun getFiveDaysWheather(cityName: String) {
-        mainActivityInteractor!!.getFiveDaysWheather(cityName)
+        mainActivityInteractor.getFiveDaysWheather(cityName)
     }
 
     override fun showMainWeather(mainWeather: MainWeather) {
-        mainActivityView!!.showMainWeather(mainWeather)
+        mainActivityView.showMainWeather(mainWeather)
     }
 
     override fun showFiveDaysWeather() {

@@ -3,6 +3,7 @@ package com.climaconsulta.user.repository
 import com.climaconsulta.user.model.pojos.MainWeather
 import com.climaconsulta.user.model.pojosRetrofit.MainWeatherResponse
 import com.climaconsulta.user.presenter.MainActivityPresenter
+import com.climaconsulta.user.presenter.MainActivityPresenterImpl
 import com.climaconsulta.weatherApi.RestApiAdapter
 import com.climaconsulta.weatherApi.Service
 import com.google.gson.JsonObject
@@ -13,16 +14,17 @@ import retrofit2.Response
 
 class MainActivityRepositoryImpl : MainActivityRepository{
 
-    private val mainActivityPresenter: MainActivityPresenter? = null
+    private lateinit var mainActivityPresenter: MainActivityPresenter
 
     override fun getCurrentCity() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getMainWeather(cityName: String) {
-        val restApiAdapter: RestApiAdapter? = null
-        val service: Service = restApiAdapter!!.getClientService()
-        val call = service.getMainWeather(cityName)
+        mainActivityPresenter = MainActivityPresenterImpl()
+        val restApiAdapter: RestApiAdapter = RestApiAdapter()
+        val service: Service = restApiAdapter.getClientService()
+        val call = service.getMainWeather(cityName, "es", "metric")
         call.enqueue(object : Callback<MainWeatherResponse> {
 
             override fun onResponse(call: Call<MainWeatherResponse>, response: Response<MainWeatherResponse>) {
@@ -33,7 +35,7 @@ class MainActivityRepositoryImpl : MainActivityRepository{
                     name = mainWeatherResponse?.name
                 )
                 if (mainWeather != null) {
-                    mainActivityPresenter!!.showMainWeather(mainWeather)
+                    mainActivityPresenter.showMainWeather(mainWeather)
                 }
             }
 

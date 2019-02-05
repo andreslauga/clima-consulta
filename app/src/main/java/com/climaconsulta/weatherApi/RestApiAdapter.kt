@@ -15,8 +15,6 @@ class RestApiAdapter {
         override fun intercept(chain: Interceptor.Chain): Response {
             val newRequest = chain.request().newBuilder()
                 .addHeader("APPID", Constants.APPID)
-                .addHeader("lang", "es")
-                .addHeader("units", "metric")
                 .build()
             return chain.proceed(newRequest)
         }

@@ -11,8 +11,9 @@ interface Service {
 
     @GET(MAIN_WEATHER)
     fun getMainWeather(
-        @Query("city") city: String,
+        @Query("q") city: String,
         @Query("lang") lang: String,
-        @Query("units") units: String):
+        @Query("units") units: String,
+        @Query("appid") appid: String):
             Call<MainWeatherResponse>
 }

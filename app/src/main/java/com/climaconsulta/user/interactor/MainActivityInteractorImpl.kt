@@ -7,7 +7,7 @@ import com.climaconsulta.user.repository.MainActivityRepositoryImpl
 
 class MainActivityInteractorImpl : MainActivityInteractor{
 
-    private val presenter: MainActivityPresenter = MainActivityPresenterImpl()
+//    private val presenter: MainActivityPresenter = MainActivityPresenterImpl()
     private var mainActivityRepository: MainActivityRepository = MainActivityRepositoryImpl()
 
     override fun getCurrentCity(ipAdress: Int?) {

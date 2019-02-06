@@ -9,13 +9,14 @@ import com.climaconsulta.user.view.MainActivityView
 class MainActivityPresenterImpl : MainActivityPresenter {
 
     private var mainActivityView: MainActivityView = MainActivity()
-    private var mainActivityInteractor: MainActivityInteractor = MainActivityInteractorImpl()
+    private lateinit var mainActivityInteractor: MainActivityInteractor
 
     override fun getCurrentCity() {
 
     }
 
     override fun getMainWeather(cityName: String) {
+        mainActivityInteractor = MainActivityInteractorImpl()
         mainActivityInteractor.getMainWheather(cityName)
     }
 

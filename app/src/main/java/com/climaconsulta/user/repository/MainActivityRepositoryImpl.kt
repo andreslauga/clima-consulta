@@ -4,6 +4,7 @@ import com.climaconsulta.user.model.pojos.MainWeather
 import com.climaconsulta.user.model.pojosRetrofit.MainWeatherResponse
 import com.climaconsulta.user.presenter.MainActivityPresenter
 import com.climaconsulta.user.presenter.MainActivityPresenterImpl
+import com.climaconsulta.weatherApi.Constants
 import com.climaconsulta.weatherApi.RestApiAdapter
 import com.climaconsulta.weatherApi.Service
 import com.google.gson.JsonObject
@@ -24,7 +25,7 @@ class MainActivityRepositoryImpl : MainActivityRepository{
         mainActivityPresenter = MainActivityPresenterImpl()
         val restApiAdapter: RestApiAdapter = RestApiAdapter()
         val service: Service = restApiAdapter.getClientService()
-        val call = service.getMainWeather(cityName, "es", "metric")
+        val call = service.getMainWeather(cityName, "es", "metric", Constants.APPID)
         call.enqueue(object : Callback<MainWeatherResponse> {
 
             override fun onResponse(call: Call<MainWeatherResponse>, response: Response<MainWeatherResponse>) {

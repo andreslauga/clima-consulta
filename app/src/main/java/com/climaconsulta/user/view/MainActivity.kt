@@ -1,12 +1,20 @@
 package com.climaconsulta.user.view
 
+import android.app.Activity
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import com.climaconsulta.R
 import com.climaconsulta.user.model.pojos.MainWeather
 import com.climaconsulta.user.presenter.MainActivityPresenter
 import com.climaconsulta.user.presenter.MainActivityPresenterImpl
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity(), MainActivityView {
 
@@ -19,12 +27,13 @@ class MainActivity : AppCompatActivity(), MainActivityView {
         presenter!!.getMainWeather("London")
     }
 
+
     override fun showCurrentCity() {
         presenter!!.getCurrentCity()
     }
 
     override fun showMainWeather(mainWeather: MainWeather) {
-        Log.d("respuesta", mainWeather.name)
+        mainTemperature.text = mainWeather.main!!.temp.toString()
     }
 
     override fun showFiveDaysWeather(cityName: String) {
